@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="d-flex flex-column h-100">
+  <head th:fragment="head">
+    <title>Spark Back-End</title>
+    <link rel="shortcut icon" href="/img/spark-logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <script src="/js/bootstrap.bundle.min.js"></script>
+  </head>
+
+  <body class="d-flex flex-column flex-grow-1">
+    <nav
+      th:fragment="nav"
+      class="navbar navbar-expand-lg navbar-dark bg-primary"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <div class="d-flex flex-grow-1 align-items-end flex-wrap">
+            <img src="/img/spark-logo.png" alt="spark" />
+            <a class="navbar-brand btn btn-outline-dark" href="/">Home</a>
+          </div>
+        </a>
+      </div>
+    </nav>
+
+    <main class="d-flex flex-column flex-grow-1">
+      <div class="container py-3">
+        <p>General</p>
+      </div>
+    </main>
+
+    <footer
+      th:fragment="footer"
+      class="
+        container-fluid
+        d-flex
+        justify-content-center
+        p-5
+        bg-dark
+        text-light
+      "
+    >
+      <small>By Sure, 2021</small>
+    </footer>
+  </body>
+</html>

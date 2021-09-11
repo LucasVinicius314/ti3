@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="d-flex flex-column h-100">
+  <div th:replace="general :: head"></div>
+
+  <body class="d-flex flex-column flex-grow-1">
+    <div th:replace="general :: nav"></div>
+
+    <main class="d-flex flex-column flex-grow-1">
+      <div class="container py-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="/">Home</a></li>
+          </ol>
+        </nav>
+
+        <hr />
+
+        <h4 class="mb-3">Create new product</h4>
+
+        <form action="/" method="post">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" class="form-control" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="ean">EAN</label>
+                <input type="text" name="ean" id="ean" class="form-control" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="name">Price</label>
+                <input
+                  type="text"
+                  name="price"
+                  id="price"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-12 d-flex flex-row-reverse">
+              <input class="btn btn-success" type="submit" value="Create" />
+            </div>
+          </div>
+        </form>
+
+        <hr />
+
+        <h4 class="mb-3">View products</h4>
+
+        <table class="table table-bordered rounded-1">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>EAN</th>
+              <th>Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="product: ${products}">
+              <td th:text="${product.id}"></td>
+              <td th:text="${product.name}"></td>
+              <td th:text="${product.ean}"></td>
+              <td
+                th:text="${product.getFormattedPrice()}"
+                class="text-end"
+              ></td>
+              <td style="width: 17%; white-space: nowrap">
+                <div class="d-flex flex-wrap flex-row-reverse">
+                  <a
+                    th:href="${'update/' + product.id}"
+                    class="btn btn-primary my-1 ms-2"
+                    >Edit</a
+                  >
+                  <form th:action="${'delete/' + product.id}" method="post">
+                    <input
+                      class="btn btn-danger my-1 ms-2"
+                      type="submit"
+                      value="Delete"
+                    />
+                  </form>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <div th:replace="general :: footer"></div>
+  </body>
+</html>
